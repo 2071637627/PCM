@@ -166,6 +166,16 @@ selected_model = st.selectbox("Selecting a Predictive Model", list(models.keys()
 if st.button("Start forecasting"):
     try:
         model = models[selected_model]
+
+         # 验证特征列名
+        if hasattr(model, 'feature_names_in_'):
+            if not (df.columns == model.feature_names_in_).all():
+                raise ValueError("Feature names in the input data do not match those in the model.")
+        
+        # 验证归一化器的特征列名
+        if hasattr(scaler, 'feature_names_in_'):
+            if not (df.columns == scaler.feature_names_in_).all():
+                raise ValueError("Feature names in the input data do not match those in the scaler.")
         
         # 对输入数据进行归一化处理
         scaled_df = scaler.transform(df)
