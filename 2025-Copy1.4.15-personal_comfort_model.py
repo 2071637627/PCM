@@ -16,7 +16,7 @@ Image.MAX_IMAGE_PIXELS = None
 # 加载模型
 models = {
     'LightGBM': joblib.load('lgbm_model.pkl')
-    #'XGBoost': joblib.load('xgb_model.pkl')
+    'XGBoost': joblib.load('xgb_model.pkl')
 }
 
 scaler = joblib.load('minmax_scaler.pkl')  # 加载训练时保存的归一化器
