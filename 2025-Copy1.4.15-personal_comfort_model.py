@@ -13,18 +13,10 @@ import os  # 新增路径处理
 # 允许加载高分辨率图片
 Image.MAX_IMAGE_PIXELS = None
 
-# 检查模型文件是否存在
-if not os.path.exists('lgbm_model.pkl') or not os.path.exists('xgb_model.pkl'):
-    st.error("Model files are missing. Please ensure 'lgbm_model.pkl' and 'xgb_model.pkl' are in the correct directory.")
-    raise FileNotFoundError("Model files are missing.")
-
-# 检查 Joblib 版本
-print(f"Joblib version: {joblib.__version__}")
-
 # 加载模型
 models = {
-    'LightGBM': joblib.load('lgbm_model.pkl'),
-    'XGBoost': joblib.load('xgb_model.pkl')
+    'LightGBM': joblib.load('lgbm_model.pkl')
+    #'XGBoost': joblib.load('xgb_model.pkl')
 }
 
 scaler = joblib.load('minmax_scaler.pkl')  # 加载训练时保存的归一化器
