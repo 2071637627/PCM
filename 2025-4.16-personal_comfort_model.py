@@ -21,7 +21,7 @@ models = {
 
 scaler = joblib.load('minmax_scaler.pkl')  # 加载训练时保存的归一化器
 
-feature_names = joblib.load('feature_names.pkl')
+#feature_names = joblib.load('feature_names.pkl')
 
 # 页面配置
 st.set_page_config(
@@ -108,11 +108,11 @@ def generate_data():
     # 构造基础特征
     base_features = {
         'Sex': sex_code,
-        'Age_Category': categorize_age(Age),
         'Height': Height,
         'Weight': Weight,
         'Clothing Insulation': Clothing_Insulation,
-        'Metabolic Rate': Metabolic_Rate
+        'Metabolic Rate': Metabolic_Rate,
+        'Age_Category': categorize_age(Age)
     }
 
     # 生成环境参数
@@ -127,10 +127,9 @@ def generate_data():
 
     # 合并特征并排序
     feature_order = [
-        'Sex', 'Age_Category', 'Height', 'Weight',
-        'Clothing Insulation', 'Metabolic Rate',
+        'Sex', 'Height', 'Weight', 'Clothing Insulation', 'Metabolic Rate',
         'Indoor Air Temperature', 'Indoor Relative Humidity',
-        'Indoor Air Velocity', 'Mean Daily Outdoor Temperature'
+        'Indoor Air Velocity', 'Mean Daily Outdoor Temperature', 'Age_Category'
     ]
     
     df = pd.concat([pd.DataFrame([base_features]*n_samples).reset_index(drop=True), env_params], axis=1)
