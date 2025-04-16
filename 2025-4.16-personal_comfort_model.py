@@ -21,6 +21,8 @@ models = {
 
 scaler = joblib.load('minmax_scaler.pkl')  # 加载训练时保存的归一化器
 
+feature_names = joblib.load('feature_names.pkl')
+
 # 页面配置
 st.set_page_config(
     page_title="Thermal comfort prediction system",
