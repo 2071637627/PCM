@@ -15,11 +15,11 @@ Image.MAX_IMAGE_PIXELS = None
 
 # 加载模型
 models = {
-    'LightGBM': joblib.load('C:\\Users\\29085\\PycharmProjects\\PythonProject\\demo20250326\\lgbm_model.pkl'),
-    'XGBoost': joblib.load('C:\\Users\\29085\\PycharmProjects\\PythonProject\\demo20250326\\xgb_model.pkl')
+    'LightGBM': joblib.load('lgbm_model.pkl'),
+    'XGBoost': joblib.load('xgb_model.pkl')
 }
 
-scaler = joblib.load('C:\\Users\\29085\\PycharmProjects\\PythonProject\\demo20250326\\minmax_scaler.pkl')  # 加载训练时保存的归一化器
+scaler = joblib.load('minmax_scaler.pkl')  # 加载训练时保存的归一化器
 
 # 页面配置
 st.set_page_config(
